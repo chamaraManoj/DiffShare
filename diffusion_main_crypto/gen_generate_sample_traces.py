@@ -136,6 +136,15 @@ def select_token_transaction(num_of_chunks):
 
     return sel_chunk_data
 
+# This function will read a minmax distribution from a already created distribution.
+# one sample will be read
+def get_global_minmax_data_from_csv_file(path_in):
+    arr = pd.read_csv(path_in,
+                      header=None).values
+    np.random.shuffle(arr)
+
+    return arr[0]
+
 
 # save the chunks for a given transaction
 def save_samples(chunk_val,
@@ -248,15 +257,14 @@ for seq in seqs:
 
             x_val_prevs = torch.zeros(1, 1, num_of_row_val, num_of_col_val)
 
-            # get the minmax data at global level that can feed to the model.
-            # this will be used as a condition to the model for generation of the data.
-            x_minmax = get_global_minmax_data(
-                path_model_minmax=os.getcwd() + '/models/minmax/' + model_minmax_name + '.pt',
-                path_out=path_synth_minmax_analysis + '/' + model_minmax_name,
-                csv_name='chunk_' + str(count)
-            )
+            # get the minmax values from the csv file. this csv file contains the synthesized minmax data from the minma
+            # ax generators for each features
+            path_minmax = os.getcwd() + '/synth_minmax/' + model_minmax_name + '.csv'
+            x_minmax = get_global_minmax_data_from_csv_file(path_in=path_minmax)
             x_minmax = torch.from_numpy(x_minmax).to(DEVICE)[None, :]
+            x_minmax = x_minmax.to(torch.float32)
 
+            # iteratively generate the chunks for a given sequence
             for c in range(num_of_chunks):
                 print('                         chunk ' + str(c))
                 if c == 0:
