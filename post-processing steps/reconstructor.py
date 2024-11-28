@@ -1,5 +1,5 @@
 '''
-Combine chunk together and re-construct the original values
+Combine chunk together and re-construct the original values taking the minmax and the normalized data as the input
 '''
 
 import numpy as np
@@ -74,7 +74,7 @@ def convert_bit_sequence_int(bit_seq):
     # return BitArray(bin=str_seq).int
     return int(str_seq, 2)
 
-
+# re-construct the integer or floating  minmax values based on the binary values provided
 def reconstruct_minmax(chunk_minmax):
     cols = list(config.bit_dict.keys())
 
@@ -102,7 +102,7 @@ def reconstruct_minmax(chunk_minmax):
 
     return list_minmax
 
-
+# re-scale the values using the normalized and the min max values
 def re_scale(list_minmax, chunk_data):
     return_chunk_data = chunk_data.copy()
     list_cols = []
@@ -179,7 +179,6 @@ if __name__ == '__main__':
 
             df.to_csv(path_out + '/token_' + str(t + 1) + '.csv',
                       index=False)
-
 
     else:
         list_tokens = os.listdir(path_in)
