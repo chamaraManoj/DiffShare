@@ -15,4 +15,12 @@ This phase contains the initial implementation of the DiffShare, including the c
    - trained\_models: trained light weight DM model for **normal** (given as **Norma**) adn **rugpull** (given as **Normal\_rug**) data. Models are given for each feature separartely.
    - `.py` scripts: all the python scripts corresponding for the minmax data generation
 5. post-processing steps: contains the codes for post processing steps (chunk mergaing and converting normalized data to the original values)
+
+## General workflow of the DiffShare
+
+![Training process of main diffusion model](images/train-main-dm.jpg)
+
+![Training process of minmax diffusion model](images/train-minmax-dm.jpg)
+
+![Generation of data](images/generation.jpg)
     
