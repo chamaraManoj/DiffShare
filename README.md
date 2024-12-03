@@ -18,12 +18,12 @@ This phase contains the initial implementation of the DiffShare, including the c
 
 ## General workflow of the DiffShare
 
-Training - main diffusion model
+**Training - main diffusion model**
 ![Training process of main diffusion model](images/train-main-dm.jpg)
 
-Training - minmax diffusion model
+**Training - minmax diffusion model**
 ![Training process of minmax diffusion model](images/train-minmax-dm.jpg)
 
-Generation of data
+**Generation of data**
 ![Generation of data](images/generation.jpg)
     
