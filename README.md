@@ -16,7 +16,7 @@ This phase contains the initial implementation of the DiffShare, including the c
    - `.py` scripts: all the python scripts corresponding for the minmax data generation
 5. post-processing steps: contains the codes for post processing steps (chunk mergaing and converting normalized data to the original values)
 
-## General workflow of the DiffShare
+### General workflow of the DiffShare
 
 **Training - main diffusion model**
 ![Training process of main diffusion model](images/train-main-dm.jpg)
@@ -26,4 +26,5 @@ This phase contains the initial implementation of the DiffShare, including the c
 
 **Generation of data**
 ![Generation of data](images/generation.jpg)
-    
+
+### Running scripts
